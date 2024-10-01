@@ -1,0 +1,36 @@
+# Overrides for default Detekt rules. Documentation: https://detekt.dev/docs/introduction/configurations
+naming:
+  FunctionNaming:
+    ignoreAnnotated: ['Composable'] # Jetpack Compose override (https://detekt.dev/docs/introduction/compose/#functionnaming)
+  TopLevelPropertyNaming:
+    constantPattern: '[A-Z][A-Za-z0-9]*' # Jetpack Compose override (https://detekt.dev/docs/introduction/compose/#toplevelpropertynaming)
+complexity:
+  LongMethod:
+    active: false
+  LongParameterList:
+    active: false
+  NamedArguments:
+    active: true
+style:
+  DestructuringDeclarationWithTooManyEntries:
+    active: false
+  ForbiddenComment:
+    allowedPatterns: 'TODO:'
+  MagicNumber:
+    ignorePropertyDeclaration: true # Jetpack Compose override (https://detekt.dev/docs/introduction/compose/#magicnumber)
+    ignoreCompanionObjectPropertyDeclaration: true # Jetpack Compose override (https://detekt.dev/docs/introduction/compose/#magicnumber)
+    ignoreLocalVariableDeclaration: true
+  UnusedPrivateMember:
+    ignoreAnnotated: ['Preview'] # Jetpack Compose override (https://detekt.dev/docs/introduction/compose/#unusedprivatemember)
+  UnnecessaryAbstractClass:
+    ignoreAnnotated: ['dagger.Module'] # Hilt @Binds override (https://github.com/detekt/detekt/issues/4356 and https://detekt.dev/docs/rules/style/#unnecessaryabstractclass)
+formatting:
+  EnumWrapping:
+    active: true
+  IfElseBracing:
+    active: true
+  NoBlankLineInList:
+    active: true
+exceptions:
+  TooGenericExceptionCaught:
+    active: false
