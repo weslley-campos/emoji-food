@@ -23,6 +23,7 @@ dependencies {
     compileOnly(libs.android.gradle.plugin)
     compileOnly(libs.kotlin.gradle.plugin)
     compileOnly(libs.ksp.gradle.plugin)
+    compileOnly(libs.compose.gradle.plugin)
     compileOnly(libs.detekt.gradle.plugin)
 }
 
@@ -35,6 +36,14 @@ tasks {
 
 gradlePlugin {
     plugins {
+        register("androidApplicationCompose") {
+            id = "com.github.weslleystos.application.compose"
+            implementationClass = "AndroidApplicationComposeConventionPlugin"
+        }
+        register("androidLibraryCompose") {
+            id = "com.github.weslleystos.library.compose"
+            implementationClass = "AndroidLibraryComposeConventionPlugin"
+        }
         register("androidDetekt") {
             id = "com.github.weslleystos.android.detekt"
             implementationClass = "AndroidDetektConventionPlugin"

@@ -1,7 +1,9 @@
+@file:Suppress("UnstableApiUsage")
 /**
  * @see <a href="https://github.com/android/nowinandroid/blob/main/build-logic/README.md">Convention Plugins</a>
  * Convention plugins, used to keep a single source of truth for common module configurations.
  */
+
 dependencyResolutionManagement {
     repositories {
         google()
