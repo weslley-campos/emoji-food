@@ -1,7 +1,10 @@
 [versions]
+# Base
+ksp = "1.9.0-1.0.12" # Android Plugin/Kotlin JVM and KSP match
 agp = "8.5.2"
 kotlin = "1.9.0"
 coreKtx = "1.13.1"
+
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
@@ -9,15 +12,19 @@ lifecycleRuntimeKtx = "2.8.6"
 activityCompose = "1.9.2"
 composeBom = "2024.04.01"
 
+# Hilt
+hilt-android = "2.52"
+hilt-compiler = "1.2.0"
+hilt-navigation-compose = "1.2.0"
+
 # Detekt
 detekt = "1.23.7"
-detekt-compose = "1.4.0"
 
 [libraries]
 # Base
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 android-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
-
+ksp-gradle-plugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
 
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -34,15 +41,32 @@ androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-man
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 
+# Hilt
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt-android" }
+hilt-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "hilt-compiler" }
+hilt-android-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt-android" }
+hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hilt-navigation-compose" }
+
 # Detekt
 detekt-gradle-plugin = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
 detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
 
 [plugins]
+# Base
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 
+#Hilt
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt-android" }
+application-hilt = { id = "com.github.weslleystos.android.hilt", version = "unspecified"}
+
+# Detekt
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
-
-# Plugins defined by this project
 application-detekt = { id = "com.github.weslleystos.android.detekt", version = "unspecified"}
+
+[bundles]
+# Hilt
+hilt = ["hilt-android", "hilt-navigation-compose"]
+hilt-compiler = ["hilt-compiler", "hilt-android-compiler"]
+#hilt-compiler-test = ["hilt-compiler-testing"]
