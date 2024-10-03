@@ -52,5 +52,9 @@ gradlePlugin {
             id = "com.github.weslleystos.android.hilt"
             implementationClass = "AndroidHiltConventionPlugin"
         }
+        register("androidLibrary") {
+            id = "com.github.weslleystos.android.library"
+            implementationClass = "AndroidLibraryConventionPlugin"
+        }
     }
 }

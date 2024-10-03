@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Compose Navigation"
 include(":app")
+include(":core:navigation")

@@ -3,14 +3,17 @@
 agp = "8.5.2"
 # Android Plugin/Kotlin JVM and KSP match
 ksp = "2.0.20-1.0.25"
-kotlin = "2.0.20"
 coreKtx = "1.13.1"
+kotlin = "2.0.20"
+kotlinx-collections = "0.3.8"
+kotlinx-coroutines = "1.9.0"
+kotlinx-serialization = "1.7.1"
 
 # Compose
 compose-bom = "2024.09.02"
 activity-compose = "1.9.2"
 viewmodel-compose = "2.8.6"
-navigation-compose = "2.8.1"
+navigation-compose = "2.8.2"
 compose-paging = "3.3.2"
 accompanist-permissions = "0.36.0"
 slack-lint-compose = "1.4.0"
@@ -35,6 +38,10 @@ androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = 
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 android-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
 ksp-gradle-plugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
+kotlinx-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
+kotlinx-collections = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version.ref = "kotlinx-collections" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+
 
 #Compose
 compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "compose-bom" }
@@ -83,10 +90,12 @@ detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", 
 [plugins]
 # Base
 android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+application-library = { id = "com.github.weslleystos.android.libray", version = "unspecified" }
 
 # Compose
 compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
