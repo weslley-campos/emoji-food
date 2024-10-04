@@ -52,9 +52,17 @@ gradlePlugin {
             id = "com.github.weslleystos.android.hilt"
             implementationClass = "AndroidHiltConventionPlugin"
         }
+        register("androidApplication") {
+            id = "com.github.weslleystos.android.application"
+            implementationClass = "AndroidApplicationConventionPlugin"
+        }
         register("androidLibrary") {
             id = "com.github.weslleystos.android.library"
             implementationClass = "AndroidLibraryConventionPlugin"
+        }
+        register("androidFeature") {
+            id = "com.github.weslleystos.android.feature"
+            implementationClass = "AndroidFeatureConventionPlugin"
         }
     }
 }

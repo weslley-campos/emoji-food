@@ -1,6 +1,5 @@
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.application)
     alias(libs.plugins.application.compose)
     alias(libs.plugins.application.hilt)
     alias(libs.plugins.application.detekt)
@@ -8,19 +7,11 @@ plugins {
 
 android {
     namespace = "com.github.weslleystos.navigation"
-    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.github.weslleystos.navigation"
-        minSdk = 28
-        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
     }
 
     buildTypes {
@@ -31,13 +22,6 @@ android {
                 "proguard-rules.pro"
             )
         }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-    kotlinOptions {
-        jvmTarget = "17"
     }
     packaging {
         resources {

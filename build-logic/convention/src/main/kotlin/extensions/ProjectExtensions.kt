@@ -2,7 +2,6 @@
 
 package extensions
 
-import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.dsl.CommonExtension
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
@@ -55,8 +54,9 @@ internal fun Project.configureKotlin() = configure<KotlinAndroidProjectExtension
 /**
  * Configure Compose and dependencies
  */
-internal fun Project.configureAndroidCompose() {
-    val commonExtension = extensions.getByType<ApplicationExtension>()
+internal fun Project.configureAndroidCompose(
+    commonExtension: CommonExtension<*, *, *, *, *, *>,
+) {
     commonExtension.apply {
         buildFeatures {
             compose = true
