@@ -1,7 +1,7 @@
 package com.github.weslleystos.navigation
 
 import androidx.navigation.NavOptionsBuilder
-import com.github.weslleystos.navigation.graph.InitGraph
+import com.github.weslleystos.navigation.graph.MainGraph
 import com.github.weslleystos.navigation.model.Destination
 import com.github.weslleystos.navigation.model.NavigationAction
 import kotlinx.coroutines.channels.Channel
@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import javax.inject.Inject
 
 class AppNavigator @Inject constructor(
-    override val startDestination: Destination = InitGraph.SplashScreen
+    override val startDestination: Destination = MainGraph.SplashRoute
 ) : Navigator {
     private val _navigationActions = Channel<NavigationAction>()
     override val navigationActions = _navigationActions.receiveAsFlow()

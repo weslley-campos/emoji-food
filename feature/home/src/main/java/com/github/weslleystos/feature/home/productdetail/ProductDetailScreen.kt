@@ -95,7 +95,7 @@ fun ProductDetailScreen(
             Spacer(modifier = Modifier.height(24.dp))
 
             Text(
-                "Price: $${String.format("%.2f", product.price)}",
+                "Price: $${"%.2f".format(product.price)}",
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold
             )
@@ -123,7 +123,7 @@ fun ProductDetailScreen(
             Spacer(modifier = Modifier.height(24.dp))
 
             Text(
-                "Total: $${String.format("%.2f", product.price * quantity)}",
+                "Total: $${"%.2f".format(product.price * quantity)}",
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold
             )

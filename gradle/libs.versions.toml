@@ -1,6 +1,6 @@
 [versions]
 # Base
-agp = "8.5.2"
+agp = "8.7.0"
 # Android Plugin/Kotlin JVM and KSP match
 ksp = "2.0.20-1.0.25"
 coreKtx = "1.13.1"

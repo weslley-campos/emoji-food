@@ -1,0 +1,3 @@
+<issue id="ComposeMultipleContentEmitters">
+    <option name="content-emitters" value="AppNavHost" />
+</issue>

@@ -5,8 +5,11 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.displayCutout
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
@@ -53,6 +56,7 @@ fun HomeScreen(
         columns = GridCells.Fixed(2),
         contentPadding = PaddingValues(8.dp),
         modifier = modifier
+            .windowInsetsPadding(WindowInsets.displayCutout)
     ) {
         items(products) { product ->
             ProductCard(
@@ -73,7 +77,7 @@ fun ProductCard(
     Card(
         shape = RoundedCornerShape(8.dp),
         modifier = modifier
-            .padding(4.dp),
+            .padding(8.dp),
     ) {
         Column(
             modifier = Modifier.padding(8.dp),

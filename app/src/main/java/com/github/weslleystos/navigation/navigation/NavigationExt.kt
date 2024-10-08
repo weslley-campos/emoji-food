@@ -1,11 +1,16 @@
-package com.github.weslleystos.navigation.utils
+package com.github.weslleystos.navigation.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavDestination
+import androidx.navigation.NavDestination.Companion.hasRoute
+import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import com.github.weslleystos.navigation.Navigator
+import com.github.weslleystos.navigation.exceptions.NavigationException
 import com.github.weslleystos.navigation.model.Destination
 import com.github.weslleystos.navigation.model.NavigationAction
+import com.github.weslleystos.navigation.utils.collectWithLifecycle
 
 /**
  * Navigates to a top-level destination in the navigation hierarchy.
@@ -48,9 +53,35 @@ fun NavHostController.observeNavigationEvents(navigator: Navigator) {
                 action.navOptions(this)
             }
 
-            is NavigationAction.NavigateToTopLevel -> navigateToTopLevel(action.destination)
+            is NavigationAction.NavigateToTopLevel -> {
+                if (!action.destination.isTopLevelRoute()) {
+                    throw NavigationException(
+                        "Attempted to use a non-top-level destination: ${
+                            action.destination
+                        } as top-level destination."
+                    )
+                }
+
+                navigateToTopLevel(action.destination)
+            }
 
             is NavigationAction.NavigateUp -> navigateUp()
         }
+    }
+}
+
+inline fun <reified T : Any> NavDestination.isSelected(destination: T): Boolean {
+    return hierarchy.any { it.hasRoute(destination::class) }
+}
+
+fun NavDestination.isTopLevelRoute(): Boolean {
+    return topLevelRoutes.any { destination ->
+        this.hierarchy.any { it.hasRoute(destination.route::class) }
+    }
+}
+
+fun Destination.isTopLevelRoute(): Boolean {
+    return topLevelRoutes.any { destination ->
+        destination.route == this
     }
 }
