@@ -32,6 +32,7 @@ android {
 
 dependencies {
     implementation(project(":core:navigation"))
+    implementation(project(":feature:home"))
     // Base
     implementation(libs.androidx.core.ktx)
 

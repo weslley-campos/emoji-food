@@ -97,7 +97,8 @@ kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", versi
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 application = { id = "com.github.weslleystos.android.application", version = "unspecified" }
-application-library = { id = "com.github.weslleystos.android.libray", version = "unspecified" }
+application-library = { id = "com.github.weslleystos.android.library", version = "unspecified" }
+application-feature = { id = "com.github.weslleystos.android.feature", version = "unspecified" }
 
 # Compose
 compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
