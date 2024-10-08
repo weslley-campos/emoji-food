@@ -33,6 +33,7 @@ android {
 dependencies {
     implementation(project(":core:navigation"))
     implementation(project(":feature:home"))
+    implementation(project(":feature:orders"))
     // Base
     implementation(libs.androidx.core.ktx)
 
