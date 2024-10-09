@@ -7,3 +7,7 @@ plugins {
 android {
     namespace = "com.github.weslleystos.feature.home"
 }
+
+dependencies {
+    implementation(project(":core:data"))
+}

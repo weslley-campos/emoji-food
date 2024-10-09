@@ -32,7 +32,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.github.weslleystos.feature.home.model.Product
+import com.github.weslleystos.core.data.products.model.Product
 
 @Composable
 fun ProductDetailRoute(
@@ -85,27 +85,31 @@ fun ProductDetailScreen(
                     fontSize = 72.sp,
                     modifier = Modifier.padding(end = 16.dp)
                 )
-                Text(
-                    text = product.name,
-                    fontSize = 28.sp,
-                    fontWeight = FontWeight.Bold
-                )
+                Column {
+                    Text(
+                        text = product.name,
+                        fontSize = 28.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Text(
+                        "Category: ${product.category}",
+                        fontSize = 12.sp,
+                        fontWeight = FontWeight.SemiBold
+                    )
+                }
             }
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            Text(
-                "Price: $${"%.2f".format(product.price)}",
-                fontSize = 24.sp,
-                fontWeight = FontWeight.Bold
-            )
+            Text("Price: $${"%.2f".format(product.price)}", fontSize = 18.sp)
 
             Spacer(modifier = Modifier.height(24.dp))
 
             Row(
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text("Quantity:", fontSize = 20.sp)
+                Text("Quantity:", fontSize = 18.sp)
                 Spacer(modifier = Modifier.width(8.dp))
                 TextButton(onClick = { if (quantity > 1) quantity-- }) {
                     Text("-", fontSize = 16.sp)
@@ -147,8 +151,8 @@ fun ProductDetailScreen(
 
 @Preview(showBackground = true)
 @Composable
-fun ProductDetailScreenPreview() {
-    val sampleProduct = Product("Apple", "🍎", 2.50)
+private fun ProductDetailScreenPreview() {
+    val sampleProduct = Product("Apple", "🍎", "Fruit", 2.50)
     ProductDetailScreen(
         product = sampleProduct,
         onNavigateBack = {},

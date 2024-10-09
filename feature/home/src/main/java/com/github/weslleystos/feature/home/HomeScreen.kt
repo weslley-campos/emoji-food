@@ -28,8 +28,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.github.weslleystos.core.data.products.model.Product
 import com.github.weslleystos.feature.home.graph.HomeGraph.ProductDetailRoute
-import com.github.weslleystos.feature.home.model.Product
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 
@@ -113,12 +113,15 @@ fun ProductCard(
 private fun ProductGridPreview() {
     MaterialTheme {
         val sampleProducts = persistentListOf(
-            Product("Apple", "🍎", 2.50),
-            Product("Banana", "🍌", 1.80),
-            Product("Pizza", "🍕", 15.99),
-            Product("Hamburger", "🍔", 8.50),
-            Product("Strawberry", "🍓", 0.75),
-            Product("Sushi", "🍣", 1.25)
+            Product(name = "Sushi", icon = "🍣", price = 1.25, category = "Asian Food"),
+            Product(name = "Dumplings", icon = "🥟", price = 6.50, category = "Asian Food"),
+            Product(name = "Spring Roll", icon = "🥢", price = 3.75, category = "Asian Food"),
+            Product(name = "Fried Rice", icon = "🍚", price = 8.50, category = "Asian Food"),
+            Product(name = "Tempura", icon = "🍤", price = 9.99, category = "Asian Food"),
+            Product(name = "Pad Thai", icon = "🍜", price = 11.50, category = "Asian Food"),
+            Product(name = "Bibimbap", icon = "🍲", price = 12.75, category = "Asian Food"),
+            Product(name = "Ramen", icon = "🍜", price = 8.75, category = "Asian Food"),
+            Product(name = "Curry Rice", icon = "🍛", price = 9.50, category = "Asian Food")
         )
         HomeScreen(sampleProducts, {})
     }

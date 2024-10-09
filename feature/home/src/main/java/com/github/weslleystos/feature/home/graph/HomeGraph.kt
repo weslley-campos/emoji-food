@@ -1,6 +1,6 @@
 package com.github.weslleystos.feature.home.graph
 
-import com.github.weslleystos.feature.home.model.Product
+import com.github.weslleystos.core.data.products.model.Product
 import com.github.weslleystos.navigation.model.Destination
 import kotlinx.serialization.Serializable
 

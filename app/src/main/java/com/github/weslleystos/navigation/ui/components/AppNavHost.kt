@@ -7,9 +7,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.toRoute
+import com.github.weslleystos.core.data.products.model.Product
 import com.github.weslleystos.feature.home.HomeRoute
 import com.github.weslleystos.feature.home.graph.HomeGraph
-import com.github.weslleystos.feature.home.model.Product
 import com.github.weslleystos.feature.home.productdetail.ProductDetailRoute
 import com.github.weslleystos.feature.orders.OrdersRoute
 import com.github.weslleystos.feature.orders.details.OrderDetailRoute
