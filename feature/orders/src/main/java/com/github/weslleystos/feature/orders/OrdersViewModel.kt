@@ -1,36 +1,39 @@
 package com.github.weslleystos.feature.orders
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.github.weslleystos.feature.orders.model.Order
+import com.github.weslleystos.feature.orders.repositories.OrderRepository
 import com.github.weslleystos.navigation.Navigator
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlin.time.Duration.Companion.seconds
 
 @HiltViewModel
 class OrdersViewModel @Inject constructor(
-    navigator: Navigator
+    navigator: Navigator,
+    private val orderRepository: OrderRepository
 ) : ViewModel(), Navigator by navigator {
-    val orderList = persistentListOf(
-        Order(name = "Apple", icon = "🍎", quantity = 5, price = 2.50),
-        Order(name = "Banana", icon = "🍌", quantity = 6, price = 1.80),
-        Order(name = "Pizza", icon = "🍕", quantity = 2, price = 15.99),
-        Order(name = "Hamburger", icon = "🍔", quantity = 3, price = 8.50),
-        Order(name = "Strawberry", icon = "🍓", quantity = 20, price = 0.75),
-        Order(name = "Sushi", icon = "🍣", quantity = 12, price = 1.25),
-        Order(name = "Avocado", icon = "🥑", quantity = 4, price = 3.20),
-        Order(name = "Taco", icon = "🌮", quantity = 5, price = 4.50),
-        Order(name = "Grapes", icon = "🍇", quantity = 30, price = 0.20),
-        Order(name = "Ice Cream", icon = "🍦", quantity = 2, price = 3.99),
-        Order(name = "Watermelon", icon = "🍉", quantity = 1, price = 5.99),
-        Order(name = "Carrot", icon = "🥕", quantity = 10, price = 0.50),
-        Order(name = "Croissant", icon = "🥐", quantity = 4, price = 2.25),
-        Order(name = "Peach", icon = "🍑", quantity = 7, price = 1.75),
-        Order(name = "Fried Chicken", icon = "🍗", quantity = 8, price = 3.50),
-        Order(name = "Burrito", icon = "🌯", quantity = 3, price = 7.99),
-        Order(name = "Pineapple", icon = "🍍", quantity = 2, price = 4.50),
-        Order(name = "Donut", icon = "🍩", quantity = 6, price = 1.25),
-        Order(name = "Lemon", icon = "🍋", quantity = 8, price = 0.75),
-        Order(name = "Popcorn", icon = "🍿", quantity = 3, price = 3.50)
-    )
+    private val _uiState = MutableStateFlow<ImmutableList<Order>>(persistentListOf())
+    val uiState = _uiState
+        .onStart { loadOrders() }
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5_000),
+            initialValue = persistentListOf()
+        )
+
+    private fun loadOrders() = viewModelScope.launch {
+        delay(1.seconds.inWholeMilliseconds)
+        _uiState.update { orderRepository.getOrders() }
+    }
 }

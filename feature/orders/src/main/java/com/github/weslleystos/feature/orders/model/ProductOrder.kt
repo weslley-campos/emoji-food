@@ -6,7 +6,9 @@ import kotlinx.serialization.Serializable
 
 @Parcelize
 @Serializable
-data class Order(
-    val product: ProductOrder,
-    val quantity: Int,
+data class ProductOrder(
+    val name: String,
+    val icon: String,
+    val category: String,
+    val price: Double
 ) : Parcelable
