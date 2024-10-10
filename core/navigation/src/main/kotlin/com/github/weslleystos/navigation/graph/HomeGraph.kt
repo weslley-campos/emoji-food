@@ -1,4 +1,4 @@
-package com.github.weslleystos.feature.home.graph
+package com.github.weslleystos.navigation.graph
 
 import com.github.weslleystos.core.data.products.model.Product
 import com.github.weslleystos.navigation.model.Destination

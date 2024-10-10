@@ -29,7 +29,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.github.weslleystos.core.data.products.model.Product
-import com.github.weslleystos.feature.home.graph.HomeGraph.ProductDetailRoute
+import com.github.weslleystos.navigation.graph.HomeGraph.ProductDetailRoute
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 

@@ -35,6 +35,7 @@ dependencies {
     implementation(project(":core:navigation"))
     implementation(project(":feature:home"))
     implementation(project(":feature:orders"))
+    implementation(project(":feature:search"))
     // Base
     implementation(libs.androidx.core.ktx)
 

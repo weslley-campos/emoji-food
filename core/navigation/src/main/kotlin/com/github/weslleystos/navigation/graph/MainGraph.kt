@@ -14,7 +14,7 @@ sealed class MainGraph : Destination {
     data object HomeGraph : MainGraph()
 
     @Serializable
-    data object SearchGraph : MainGraph()
+    data object SearchRoute : MainGraph()
 
     @Serializable
     data object OrdersGraph : MainGraph()

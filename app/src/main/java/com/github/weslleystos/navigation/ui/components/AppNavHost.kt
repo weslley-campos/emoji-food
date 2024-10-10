@@ -9,12 +9,13 @@ import androidx.navigation.compose.navigation
 import androidx.navigation.toRoute
 import com.github.weslleystos.core.data.products.model.Product
 import com.github.weslleystos.feature.home.HomeRoute
-import com.github.weslleystos.feature.home.graph.HomeGraph
 import com.github.weslleystos.feature.home.productdetail.ProductDetailRoute
 import com.github.weslleystos.feature.orders.OrdersRoute
 import com.github.weslleystos.feature.orders.details.OrderDetailRoute
 import com.github.weslleystos.feature.orders.graph.OrdersGraph
 import com.github.weslleystos.feature.orders.model.Order
+import com.github.weslleystos.feature.search.SearchRoute
+import com.github.weslleystos.navigation.graph.HomeGraph
 import com.github.weslleystos.navigation.graph.MainGraph
 import com.github.weslleystos.navigation.model.Destination
 import com.github.weslleystos.navigation.ui.splashscreen.SplashRoute
@@ -49,6 +50,10 @@ fun AppNavHost(
                 val product = backStackEntry.toRoute<HomeGraph.ProductDetailRoute>().product
                 ProductDetailRoute(product)
             }
+        }
+
+        composable<MainGraph.SearchRoute> {
+            SearchRoute()
         }
 
         navigation<MainGraph.OrdersGraph>(
